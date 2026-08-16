@@ -23,20 +23,37 @@
     <div class="card">
         <h2>1. DevTool Utilities (Free Suite)</h2>
         <p>A lightweight collection of open-source formatting and text-processing scripts designed for developer workflows.</p>
-        <!-- Replace '#' with your actual affiliate/tracking link -->
-        <a href="#" class="btn" target="_blank">Explore Documentation</a>
+        <!-- Replace the href URL below with your actual partner/affiliate link base -->
+        <a href="https://your-partner-program-link.com/?ref=yourID" class="track-btn btn" target="_blank">Explore Documentation</a>
     </div>
 
     <div class="card">
         <h2>2. OpenText CLI Tool</h2>
         <p>Command-line resource management software available under open-source licensing.</p>
-        <!-- Replace '#' with your actual affiliate/tracking link -->
-        <a href="#" class="btn" target="_blank">View Project Specs</a>
+        <!-- Replace the href URL below with your actual partner/affiliate link base -->
+        <a href="https://your-partner-program-link.com/?ref=yourID" class="track-btn btn" target="_blank">View Project Specs</a>
     </div>
 
     <div class="token-box">
         Verification Token for Task Completion: <span id="token">OS-7024-DEV</span>
     </div>
 
+    <script>
+        // Automatically append the Microworkers subid to outbound partner links
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const subid = urlParams.get('subid');
+            
+            if (subid) {
+                const buttons = document.querySelectorAll('.track-btn');
+                buttons.forEach(button => {
+                    let currentUrl = button.getAttribute('href');
+                    // Appends &subid=MW_xxxx or ?subid=MW_xxxx depending on link structure
+                    let separator = currentUrl.includes('?') ? '&' : '?';
+                    button.setAttribute('href', currentUrl + separator + 'subid=' + subid);
+                });
+            }
+        });
+    </script>
 </body>
 </html>
